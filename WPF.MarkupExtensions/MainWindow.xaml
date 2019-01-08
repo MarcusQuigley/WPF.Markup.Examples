@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Background="BurlyWood" Text="{local:Environment PROCESSOR_IDENTIFIER}" 
+        <TextBlock Background="BurlyWood" Text="{local:Environment VariableName=PROCESSOR_IDENTIFIER }" 
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Left" Padding="4"/>
     </Grid>

@@ -12,10 +12,12 @@ namespace WPF.MarkupExtensions
     {
         public string VariableName { get; set; }
 
-        //public EnvironmentExtension(string variableName)
-        //{
-        //    VariableName = variableName;
-        //}
+        public EnvironmentExtension() { }
+
+        public EnvironmentExtension(string variableName)
+        {
+            VariableName = variableName;
+        }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {

@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.MarkupExtensions"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:properties ="clr-namespace:WPF.MarkupExtensions.Properties"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="odp" 
+                            ObjectType="{x:Type sys:Enum}"
+                            MethodName="GetNames" >
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Directional"/>
+            </ObjectDataProvider.MethodParameters>
+            
+        </ObjectDataProvider>
+    </Window.Resources>
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType="FrameworkElement">
@@ -20,5 +31,7 @@
                  Width="200" HorizontalAlignment="Left"/>
         <Ellipse Fill="{local:SettingBinding AppColor}"
                  Height="50" Width="50"/>
+        <ListBox ItemsSource="{Binding Source={StaticResource ResourceKey=odp}}"/>
+        <ListBox  ItemsSource="{local:EnumValues {x:Type local:Directional}}" />
     </StackPanel>
 </Window>

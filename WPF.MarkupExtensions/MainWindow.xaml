@@ -4,11 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.MarkupExtensions"
+        xmlns:properties ="clr-namespace:WPF.MarkupExtensions.Properties"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="FrameworkElement">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+        </StackPanel.Resources>
         <TextBlock Background="BurlyWood" Text="{local:Environment VariableName=PROCESSOR_IDENTIFIER }" 
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Left" Padding="4"/>
-    </Grid>
+        <TextBox Text="{local:SettingBinding Path=AppName, Mode=TwoWay}" 
+                 Width="200" HorizontalAlignment="Left"/>
+        <Ellipse Fill="{local:SettingBinding AppColor}"
+                 Height="50" Width="50"/>
+    </StackPanel>
 </Window>

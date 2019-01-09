@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +58,10 @@
     </ApplicationDefinition>
     <Compile Include="Directional.cs" />
     <Compile Include="EnumValuesExtension.cs" />
+    <Compile Include="LocExtension.cs" />
+    <Compile Include="LocImageExtension.cs" />
+    <Compile Include="LocManager.cs" />
+    <Compile Include="LocStringExtension.cs" />
     <Compile Include="SettingBindingExtension.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -86,6 +91,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -97,6 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flag.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flags\us.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flags\fr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

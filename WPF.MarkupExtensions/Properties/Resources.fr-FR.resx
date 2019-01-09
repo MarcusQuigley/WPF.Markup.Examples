@@ -120,19 +120,12 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Flag" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACYAAAAUCAIAAABu7dhfAAAABGdBTUEAALGPC/xhBQAAAgBJREFUSEtj
-        YNPNMQxqZdDIMAho4TLIY9XJNg5uB3J1fJq4DfNZtLNMwFwt70Z+08LZAtb7uQwoRAyMmplBeTPFrcs8
-        UiYKmhaKWpUE5s6QtC13SeyXsC4HikO4NtHdUvYVm3M679ZMpBAxAH3Aa1yQ0bCMz6RQ07vBK20KkJte
-        vxTIVXSp8c+eDuECvQhUef764/8UAwYO/dz8tlXsejnJ1YuBfgJakNe6EigYUzZPwbmaxyi/oG0VkBta
-        MAvooHnSLoclbChEIF8CI6ykay2bbrZ+QAvQaCC3uHMN0BGq7nVAiyFcDr0coMr1UZXXU2spRCBfFnSs
-        BsZoau0SoC+BNgG9xaSVmVC5UN6pCuiOoo41QG5E0RygL6kTsEC3A1FF73qguUBfRhbPBXLLe9Yxa2cB
-        fQm0GMIF+hXIWKwXelI/gEIE8mVZ9zqgcVmNy4G+BOaZ0u61QG5KzWJgXAJtAtoH5MaWzQfmk9W+eZfD
-        CihEUF8CbQX6Use3KaoE5EsgF+hLZbdaNF9SJ2CBkVfYvhpoYmbjMjHrUqCngYkFyE2qXiTrWAmMSwgX
-        6BQ1j/pl1vFn7WMpRAy6eumGRlk6umn6BhlABGQYm2Tj4q63oYaVUN/SETCgxS0dEANaCqYDGoiARSuN
-        6IAY0MpcOqCBCFi0+pMOiAGtlUBzxGUAAJ97CqhmsMMbAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAIAAAAVyRqTAAAABGdBTUEAALGPC/xhBQAAADFJREFUSEtj
+        YFCYjwf9xwu+aDniQaNGo6FRo9HQqNFoaNRoNDRqNBoaNRoN0cxoLUcA7939RjBBQwgAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="HelloWorld" xml:space="preserve">
-    <value>Hello World!</value>
+    <value>Bonjour le monde!</value>
   </data>
 </root>

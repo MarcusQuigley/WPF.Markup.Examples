@@ -38,7 +38,7 @@
                       VerticalAlignment="Center"
                       ItemsSource="{Binding AvailableCultures, Source={StaticResource locManager}}"
                       SelectedItem="{Binding UICulture, Source={StaticResource locManager}}"
-                        />
+                      DisplayMemberPath="NativeName" />
         <ListBox Margin="3"
                       VerticalAlignment="Center"
                       ItemsSource="{Binding SomeItems, Source={StaticResource locManager}}">

@@ -8,17 +8,42 @@
         Title="NewWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:NewWindowViewModel/>
-    </Window.DataContext> 
+    </Window.DataContext>
+    <Window.Resources>
+        <ControlTemplate x:Key="roundLable" TargetType="Label" >
+            <Grid>
+                <Ellipse x:Name="outer" Fill="Red"
+                                 Width="150" Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width}" 
+                                 />
+                <Ellipse x:Name="inner" Fill="Peru"
+                                 Width="130" Height="{Binding ElementName=inner, Path=Width}" 
+                                 />
+                <CheckBox IsChecked="{local:NetworkAvailable}" 
+                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Bottom"/>
+                <ContentPresenter Content="{local:Time}" HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Text="{local:Time}"/>
-        <TextBlock Grid.Row="1" Text="{Binding CurrentTime}"/>
+        <!--<CheckBox IsChecked="{local:NetworkAvailable}" 
+                  HorizontalAlignment="Left" />
+        <TextBlock Grid.Row="1" Text="{local:Time}">
+          </TextBlock>-->
+        <Label    
+               Template="{StaticResource roundLable}"/>
+        <Label Grid.Row="1"  
+               Template="{StaticResource roundLable}"/>
+        <Label Grid.Row="2"  
+               Template="{StaticResource roundLable}"/>
     </Grid>
 </Window>

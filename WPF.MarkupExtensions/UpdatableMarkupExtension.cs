@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Markup;
@@ -7,7 +8,8 @@ namespace WPF.MarkupExtensions
 {
     public abstract class UpdatableMarkupExtension : MarkupExtension
     {
-        private object _target;
+        private List<object> _targetList = new List<object>();
+      //  private object _target;
         private object _targetProperty;
 
         public sealed override object ProvideValue(IServiceProvider serviceProvider)
@@ -15,31 +17,39 @@ namespace WPF.MarkupExtensions
             var target = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
             if (target != null)
             {
-                _target = target.TargetObject;
-                _targetProperty = target.TargetProperty;
+                if (target.TargetObject.GetType().FullName == "System.Windows.SharedDp")
+                    return this;
+                _targetList.Add(target.TargetObject);
+                if (_targetProperty==null)
+                    _targetProperty = target.TargetProperty;
             }
             return ProvideValueInternal(serviceProvider);
         }
 
         protected void UpdateValue(object value)
         {
-            if (_target != null)
+            foreach (object target in _targetList)
             {
-                if (_targetProperty is DependencyProperty)
+
+
+               // if (_target != null)
                 {
-                    DependencyObject obj = _target as DependencyObject;
-                    DependencyProperty prop = _targetProperty as DependencyProperty;
-                    Action updateAction = () => obj.SetValue(prop, value);
-                    if (obj.CheckAccess())
-                        updateAction();
+                    if (_targetProperty is DependencyProperty)
+                    {
+                        DependencyObject obj = target as DependencyObject;
+                        DependencyProperty prop = _targetProperty as DependencyProperty;
+                        Action updateAction = () => obj.SetValue(prop, value);
+                        if (obj.CheckAccess())
+                            updateAction();
+                        else
+                            obj.Dispatcher.Invoke(updateAction);
+                    }
                     else
-                        obj.Dispatcher.Invoke(updateAction);
-                }
-                else
-                {
-                    PropertyInfo prop = _target as PropertyInfo;
-                    prop.SetValue(_target, value, null);
-                }
+                    {
+                        PropertyInfo prop = target as PropertyInfo;
+                        prop.SetValue(target, value, null);
+                    }
+                 }
             }
 
         }

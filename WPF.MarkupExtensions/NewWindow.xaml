@@ -39,6 +39,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -58,5 +61,12 @@
             <TextBlock Text="{Binding DayString}" Padding="4,2"
                        HorizontalAlignment="Left"/>
         </StackPanel>
+
+        <DataGrid Grid.Row="4" ItemsSource="{Binding People}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Namefr" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ListBox Grid.Row="5" ItemsSource="{Binding AssemblyTypes}"/>
     </Grid>
 </Window>

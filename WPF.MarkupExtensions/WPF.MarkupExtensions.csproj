@@ -56,8 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsyncObservableCollection.cs" />
     <Compile Include="Directional.cs" />
     <Compile Include="EnumValuesExtension.cs" />
+    <Compile Include="GridViewSort.cs" />
     <Compile Include="LocExtension.cs" />
     <Compile Include="LocImageExtension.cs" />
     <Compile Include="LocManager.cs" />
@@ -67,6 +69,7 @@
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewWindowViewModel.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="SettingBindingExtension.cs" />
     <Compile Include="TimeExtension.cs" />

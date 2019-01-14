@@ -59,7 +59,6 @@
     <Compile Include="AsyncObservableCollection.cs" />
     <Compile Include="Directional.cs" />
     <Compile Include="EnumValuesExtension.cs" />
-    <Compile Include="GridViewSort.cs" />
     <Compile Include="LocExtension.cs" />
     <Compile Include="LocImageExtension.cs" />
     <Compile Include="LocManager.cs" />

@@ -57,6 +57,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AsyncObservableCollection.cs" />
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="BindingProxy.cs" />
     <Compile Include="Directional.cs" />
     <Compile Include="EnumValuesExtension.cs" />
     <Compile Include="LocExtension.cs" />
@@ -73,6 +75,10 @@
     <Compile Include="SettingBindingExtension.cs" />
     <Compile Include="TimeExtension.cs" />
     <Compile Include="UpdatableMarkupExtension.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowOneViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +93,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,18 +18,19 @@
     </Window.InputBindings>
     <Window.Resources>
         <ControlTemplate x:Key="roundLable" TargetType="Label" >
-            <Grid TextBlock.FontSize="4">
+            <Grid TextBlock.FontSize="11">
                 <Ellipse x:Name="outer" Fill="Red"
-                                 Width="60" Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width}" 
+                                 Width="110" Height="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Width}" 
                                  />
                 <Ellipse x:Name="inner" Fill="Peru"
-                                 Width="40" Height="{Binding ElementName=inner, Path=Width}" 
+                                 Width="95" Height="{Binding ElementName=inner, Path=Width}" 
                                  />
                 <CheckBox IsChecked="{local:NetworkAvailable}" 
                           HorizontalAlignment="Center"
                                           VerticalAlignment="Bottom"/>
                 <ContentPresenter Content="{local:Time}" HorizontalAlignment="Center"
                                           VerticalAlignment="Center"/>
+                
             </Grid>
         </ControlTemplate>
     </Window.Resources>
@@ -50,10 +51,16 @@
                   HorizontalAlignment="Left" />
         <TextBlock Grid.Row="1" Text="{local:Time}">
           </TextBlock>-->
-        <Label    
-               Template="{StaticResource roundLable}"/>
-        <Label Grid.Row="1"  
-               Template="{StaticResource roundLable}"/>
+        <!--<Label    
+               Template="{StaticResource roundLable}"/>-->
+        <Label Grid.Row="1" >
+            <Label.Template>
+                <ControlTemplate>
+                    <TextBlock Text="{local:Time}"/>
+                </ControlTemplate>
+            </Label.Template>
+        </Label> 
+                
  
         <StackPanel  Grid.Row="3" Orientation="Horizontal">
             <Button Content="Day" Command="{Binding DayCommand}" 

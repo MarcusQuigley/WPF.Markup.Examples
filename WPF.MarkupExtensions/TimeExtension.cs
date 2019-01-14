@@ -21,12 +21,12 @@ namespace WPF.MarkupExtensions
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            base.UpdateValue(e.SignalTime.TimeOfDay.ToString());
+            base.UpdateValue(e.SignalTime.TimeOfDay.ToString(@"hh\:mm\:ss"));
         }
 
         protected override object ProvideValueInternal(IServiceProvider serviceProvider)
         {
-            return (DateTime.Now.TimeOfDay.ToString());
+            return (DateTime.Now.TimeOfDay.ToString(@"hh\:mm\:ss"));
         }
 
         public void Dispose()

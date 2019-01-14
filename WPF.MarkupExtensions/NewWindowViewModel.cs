@@ -13,7 +13,8 @@ namespace WPF.MarkupExtensions
 {
     class NewWindowViewModel : INotifyPropertyChanged
     {
-        ObservableCollection<Person> _people;
+        AsyncObservableCollection<Person> _people;
+        private AsyncObservableCollection<string> _strings;// = new AsyncObservableCollection<string>();
         TimeSpan currentTime = DateTime.Now.TimeOfDay;
         string _dayString = string.Empty;
         ICommand _dayCommand;
@@ -24,7 +25,7 @@ namespace WPF.MarkupExtensions
         {
             _dayCommand = new RelayCommand(GetDay);
 
-            People = new ObservableCollection<Person>() {
+            People = new AsyncObservableCollection<Person>() {
                 new Person(){Id=1,Name= "Marcus",City= "New York" },
                  new Person(){Id=2,Name= "Ove",City= "Stockholm" },
                   new Person(){Id=3,Name= "Jaidi",City= "Bangkok" }
@@ -40,7 +41,7 @@ namespace WPF.MarkupExtensions
                 PropertyChanged(this, new PropertyChangedEventArgs(p));
         }
 
-        private AsyncObservableCollection<string> _strings;// = new AsyncObservableCollection<string>();
+      
         public AsyncObservableCollection<string> AssemblyTypes
         {
             get { return _strings; }
@@ -54,7 +55,7 @@ namespace WPF.MarkupExtensions
             }
         }
 
-        public ObservableCollection<Person> People
+        public AsyncObservableCollection<Person> People
         {
             get => _people;
             set
@@ -108,8 +109,9 @@ namespace WPF.MarkupExtensions
             return Task.Run(() =>
              {
                  Thread.Sleep(400);
-                 People[1].Name = "Joe";
-                 AssemblyTypes.Add( "New Value");
+                 People[1]  =  new Person() { Name = "Joe", Id = 334, City = "LA" };
+                 //AssemblyTypes.Add( "New Value");
+              //   AssemblyTypes[1]="New Value";
 
              });
 

@@ -61,6 +61,7 @@
     <Compile Include="BindingProxy.cs" />
     <Compile Include="Directional.cs" />
     <Compile Include="EnumValuesExtension.cs" />
+    <Compile Include="EventBindingExtension.cs" />
     <Compile Include="LocExtension.cs" />
     <Compile Include="LocImageExtension.cs" />
     <Compile Include="LocManager.cs" />

@@ -17,6 +17,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
              <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -24,7 +26,7 @@
         </Grid.ColumnDefinitions>
         <CheckBox Content="Show Id" IsChecked="{Binding ShowId}"/>
         <FrameworkElement x:Name="proxyElement" Visibility="Collapsed"/>
-        <DataGrid Grid.Row="1" AutoGenerateColumns="False"
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" 
                   ItemsSource="{Binding People}">
             <DataGrid.Resources>
                 <local:BindingProxy x:Key="proxy" Datad="{Binding}"/>
@@ -36,5 +38,7 @@
                 <DataGridTextColumn Header="City" Binding="{Binding City}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="click" Grid.Row="2" 
+                MouseRightButtonUp="{local:EventBinding  MouseRightButtonUp}"  />
     </Grid>
 </Window>

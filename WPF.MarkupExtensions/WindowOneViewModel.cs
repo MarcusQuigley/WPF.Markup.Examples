@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WPF.MarkupExtensions
 {
@@ -44,6 +45,11 @@ namespace WPF.MarkupExtensions
                     OnPropertyChanged("ShowId");
                 }
             }
+        }
+
+        public void MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

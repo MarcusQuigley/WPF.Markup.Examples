@@ -23,5 +23,10 @@ namespace WPF.MarkupExtensions
         {
             InitializeComponent();
         }
+
+        //private void Button_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        //{
+
+        //}
     }
 }

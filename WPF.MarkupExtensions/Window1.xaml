@@ -12,6 +12,23 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="booToVis"/>
         <SolidColorBrush x:Key="redBrush" Color="Red"/>
+        <Style  x:Key="btnStyle"  TargetType="Button">
+            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(local:StyleProperties.BackBrush)}"/>
+            <Setter Property="Width"      Value="{Binding RelativeSource={RelativeSource Self},Path=(local:StyleProperties.APWidth)}"/>
+        </Style>
+        <ControlTemplate x:Key="TriangleButton" TargetType="Button">
+            <Grid>
+                 <Polyline x:Name="poly"  Fill="{TemplateBinding local:StyleProperties.BackBrush}"  
+                         Points="0,0 100,100 200,0"/>
+
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="poly" Property="Fill" Value="Green"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate> 
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -38,7 +55,20 @@
                 <DataGridTextColumn Header="City" Binding="{Binding City}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="click" Grid.Row="2" 
-                MouseRightButtonUp="{local:EventBinding  MouseRightButtonUp}"  />
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+           <Button Style="{StaticResource btnStyle}" Content="click"  
+                    Padding="10,2"   Margin="10,2"
+                    local:StyleProperties.APWidth="100"
+                    local:StyleProperties.BackBrush="Red"
+                    MouseRightButtonUp="{local:EventBinding MouseRightButtonUp}" />
+      
+           
+            <Button Content="new" Template="{StaticResource TriangleButton}" local:StyleProperties.APWidth="100"
+                    local:StyleProperties.BackBrush="Orange"/>
+            <!-- local:StyleProperties.BackBrush="Green"-->
+            <!--<Path Fill="Orange" Stroke="Black" StrokeThickness="10"
+Data="M 0,0 L 0,100 L 100,100 Z M 70,0 L 0,100 L 100,100 Z"/>-->
+        </StackPanel>
+        
     </Grid>
 </Window>

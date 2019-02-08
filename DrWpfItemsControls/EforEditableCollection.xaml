@@ -11,6 +11,10 @@
         <local:EforEditableCollectionViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
         <DataTemplate DataType="{x:Type local:Character}">
             <Border BorderBrush="White" BorderThickness="1">
                 <StackPanel Orientation="Horizontal">
@@ -22,19 +26,13 @@
         <ItemsPanelTemplate x:Key="HorizontalItemsPanel">
             <StackPanel Orientation="Horizontal"></StackPanel>
         </ItemsPanelTemplate>
-        <DataTemplate x:Key="GroupHeader">
-            <TextBlock Text="{Binding Gender}">
-                <TextBlock.LayoutTransform>
-                    <RotateTransform Angle="90" />
-                </TextBlock.LayoutTransform>
-            </TextBlock>
-        </DataTemplate>
-
         <Style TargetType="{x:Type GroupItem}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type GroupItem}">
                         <DockPanel>
+                            <TextBlock Text="{Binding ItemCount}" DockPanel.Dock="Left" VerticalAlignment="Center"
+                                       TextElement.FontWeight="Bold"/>
                             <TextBlock x:Name="GroupCaption" DockPanel.Dock="Left" VerticalAlignment="Center" 
                   Text="Other" FontWeight="Bold">
                                 <TextBlock.LayoutTransform>
@@ -44,10 +42,10 @@
                             <ItemsPresenter Margin="4" />
                         </DockPanel>
                         <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Path=Gender}" Value="Male">
+                            <DataTrigger Binding="{Binding Path=Name}" Value="Male">
                                 <Setter TargetName="GroupCaption" Property="Text" Value="Boys"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=Gender}" Value="Female">
+                            <DataTrigger Binding="{Binding Path=Name}" Value="Female">
                                 <Setter TargetName="GroupCaption" Property="Text" Value="Girls"/>
                             </DataTrigger>
                         </ControlTemplate.Triggers>
@@ -55,7 +53,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        
         <local:CharacterCollection x:Key="Characters" >
             <local:Character First="Marge" Last="Bouvier" Gender="Female" Image="images/marge.png" />
             <local:Character First="Bart" Last="Simpson" Gender="Male" Image="images/bart.png" />
@@ -63,10 +61,17 @@
             <local:Character First="Maggie" Last="Simpson" Gender="Female" Image="imagescm/maggie.png" />
             <local:Character First="Homer" Last="Simpson" Gender="Male" Image="images/homer.png" />
         </local:CharacterCollection>
+        <ObjectDataProvider x:Key="genderValues" MethodName="GetNames"
+                            ObjectType="{x:Type Type={x:Type local:Gender}}">
+            <ObjectDataProvider.MethodParameters>
+               <x:Type Type="{x:Type local:Gender}"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        
         <CollectionViewSource x:Key="cvs" Source="{Binding Source={StaticResource Characters}}">
-            <!--<CollectionViewSource.SortDescriptions>
+            <CollectionViewSource.SortDescriptions>
                 <cm:SortDescription PropertyName="First" Direction="Ascending"/>
-            </CollectionViewSource.SortDescriptions>-->
+            </CollectionViewSource.SortDescriptions>
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Gender" />
             </CollectionViewSource.GroupDescriptions>
@@ -107,6 +112,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -125,6 +133,13 @@
             <TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Path=Parent, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource treeWalkerConverter}}"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Name [markupExt FE.FindName ] :"/>
             <TextBox Grid.Column="1" Grid.Row="5" Text="{local:FindName Lbox}"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Gender"/>
+            <ListBox Grid.Column="1" Grid.Row="6"
+                     
+                   ItemsSource="{Binding Source={StaticResource genderValues}}"
+                      SelectedItem="{Binding SelectedCharacter.Gender }"  />
+          
+          
 
         </Grid>
     </Grid>

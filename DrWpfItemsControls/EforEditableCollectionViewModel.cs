@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 
 namespace DrWpfItemsControls
 {
     class EforEditableCollectionViewModel : INotifyPropertyChanged
     {
         Character _selectedCharacter;
+        RelayCommand _commitCommand;
         //ObservableCollection<Character> _people;
 
         //public ObservableCollection<Character> People
@@ -25,6 +26,20 @@ namespace DrWpfItemsControls
         //        }
         //    }
         //}
+
+            public RelayCommand CommitCommand
+        {
+            get
+            {
+                if (_commitCommand == null)
+                {
+                    _commitCommand = new RelayCommand(Commit);
+                }
+                return _commitCommand;
+            }
+        }
+
+
 
         public Character SelectedCharacter {
             get => _selectedCharacter;
@@ -44,6 +59,11 @@ namespace DrWpfItemsControls
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
+        void Commit(object o)
+        {
+
         }
     }
      

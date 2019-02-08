@@ -8,12 +8,13 @@ using System.Windows;
 
 namespace DrWpfItemsControls
 {
-    public class Character : INotifyPropertyChanged
+    public class Character : INotifyPropertyChanged, IEditableObject
     {
+        Character _cachedCopy = null;
         string _first = string.Empty;
         string _last = string.Empty;
         int _age = 0;
-        //  Gender _gender = Gender.Unknown;
+         //  Gender _gender = Gender.Unknown;
         String _gender = "Gender.Unknown";
         string _image = string.Empty;
           Point _location = new Point();
@@ -53,7 +54,7 @@ namespace DrWpfItemsControls
                 }
             }
         }
-        public String Gender {
+        public string Gender {
             get => _gender;
             set
             {
@@ -103,6 +104,33 @@ namespace DrWpfItemsControls
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        public void BeginEdit()
+        {
+            _cachedCopy = new Character();
+            _cachedCopy._first = _first;
+            _cachedCopy._last = _last;
+            _cachedCopy._image = _image;
+            _cachedCopy._gender = _gender;
+        }
+
+        public void EndEdit()
+        {
+            _cachedCopy = null;
+        }
+
+        public void CancelEdit()
+        {
+           if (_cachedCopy!=null)
+            {
+                First = _cachedCopy._first;
+                Last = _cachedCopy._last;
+                Gender = _cachedCopy._gender;
+                Image = _cachedCopy._image;
+
+            }
+            _cachedCopy = null;
         }
     }
 

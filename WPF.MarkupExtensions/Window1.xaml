@@ -60,7 +60,7 @@
                     Padding="10,2"   Margin="10,2"
                     local:StyleProperties.APWidth="100"
                     local:StyleProperties.BackBrush="Red"
-                    MouseRightButtonUp="{local:EventBinding MouseRightButtonUp}" />
+                    MouseRightButtonUp="{local:EventBinding MethodForRightMouseButton}" />
       
            
             <Button Content="new" Template="{StaticResource TriangleButton}" local:StyleProperties.APWidth="100"

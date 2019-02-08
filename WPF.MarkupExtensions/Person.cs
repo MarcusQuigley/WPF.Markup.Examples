@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WPF.MarkupExtensions
 {
-    class Person : INotifyPropertyChanged
+   public class Person : INotifyPropertyChanged
     {
         int id;
         string name;

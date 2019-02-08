@@ -1,8 +1,9 @@
-﻿<Application x:Class="WPF.MarkupExtensions.App"
+﻿<Application x:Class="HillbergExamples.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPF.MarkupExtensions"
-             StartupUri="Window2.xaml">
+             xmlns:local="clr-namespace:HillbergExamples"
+             
+            >
     <Application.Resources>
          
     </Application.Resources>

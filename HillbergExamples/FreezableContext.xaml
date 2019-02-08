@@ -1,0 +1,35 @@
+﻿<Window x:Class="HillbergExamples.FreezableContext"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ms="clr-namespace:HillbergExamplesTwo"
+        xmlns:local="clr-namespace:HillbergExamples"
+        mc:Ignorable="d"
+        Title="FreezableContext" Height="450" Width="800">
+    <StackPanel>
+        <TextBox x:Name="tb"
+                 Text="{Binding Path=Name}"
+                 Margin="3" Width="100" HorizontalAlignment="Left"/>
+        <Button 
+                Content="Rename"
+                Margin="3" HorizontalAlignment="Left"
+                >
+            <Button.Command>
+                <local:MethodCommand  MethodName="Rename"  >
+                    <local:MethodCommand.Arguments>
+                        <local:MethodArgument Value="{Binding ElementName=tb, Path=Text}"/>
+                    </local:MethodCommand.Arguments>
+                </local:MethodCommand>
+            </Button.Command>
+             
+        </Button>
+        <!--<Button Content="RenameGood">
+          <Button.Command>
+                <ms:MethodCommandTwo MethodName="Rename">
+                   <ms:MethodArgumentTwo Value="{Binding Text, ElementName=_renameTextBox}" />
+                </ms:MethodCommandTwo>
+             </Button.Command>
+        </Button>-->
+    </StackPanel>
+</Window>

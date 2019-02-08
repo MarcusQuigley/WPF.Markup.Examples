@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPF.MarkupExtensions.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.MarkupExtensions"
+        mc:Ignorable="d"
+        Title="Window2" Height="450" Width="800" x:Name="windo">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVisConv"/>
+        <local:NewBindingProxy x:Key="proxy" Data="{Binding}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <CheckBox IsChecked="{Binding ShowMeDP}" Content="ShowMe" x:Name="chkb"/>
+        <FrameworkElement Visibility="Hidden" x:Name="someFE"/>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding People}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Hello" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" 
+                                    Visibility="{Binding Path=DataContext.ShowMeDP, Source={x:Reference someFE}, Converter={StaticResource boolToVisConv}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="shite1" Binding="{Binding Id}" 
+                                    Visibility="{Binding Source={StaticResource proxy}, Path=Data.ShowMeDP, Converter={StaticResource boolToVisConv}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="shite2" Binding="{Binding Id}" 
+                                    Visibility="{Binding  Source={x:Reference chkb}, Path=DataContext.ShowMeDP, Converter={StaticResource boolToVisConv}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock  Grid.Row="2" Text="Show me" Visibility="{Binding Path=ShowMeDP, Converter={StaticResource boolToVisConv}}"/>
+        <ListBox>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem Content="Here"/>
+            <ListBoxItem Content="I"/>
+            <ListBoxItem Content="Go"/>
+            <ListBoxItem Content="Again"/>
+         </ListBox>
+    </Grid>
+</Window>

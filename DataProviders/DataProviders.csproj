@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{905C8007-57EA-4355-B3D5-B3940707718F}</ProjectGuid>
+    <ProjectGuid>{DAC72AA0-3341-414D-8878-DCE5B8434906}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WPF.MarkupExtensions</RootNamespace>
-    <AssemblyName>WPF.MarkupExtensions</AssemblyName>
+    <RootNamespace>DataProviders</RootNamespace>
+    <AssemblyName>DataProviders</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,7 +37,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,37 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AsyncObservableCollection.cs" />
-    <Compile Include="BaseViewModel.cs" />
-    <Compile Include="BindingProxy.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Directional.cs" />
-    <Compile Include="NewBindingProxy.cs" />
-    <Compile Include="Extensions\EnumValuesExtension.cs" />
-    <Compile Include="Extensions\EventBindingExtension.cs" />
-    <Compile Include="Extensions\LocExtension.cs" />
-    <Compile Include="Extensions\LocImageExtension.cs" />
-    <Compile Include="Extensions\LocManager.cs" />
-    <Compile Include="Extensions\LocStringExtension.cs" />
-    <Compile Include="Extensions\NetworkAvailableExtension.cs" />
-    <Compile Include="NewWindow.xaml.cs">
-      <DependentUpon>NewWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NewWindowViewModel.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="Extensions\SettingBindingExtension.cs" />
-    <Compile Include="StyleProperties.cs" />
-    <Compile Include="Extensions\TimeExtension.cs" />
-    <Compile Include="Extensions\UpdatableMarkupExtension.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WindowOneViewModel.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="WindowObjectData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowXMLProvider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -94,23 +67,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Extensions\EnvironmentExtension.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="FooObject.cs" />
+    <Compile Include="WindowObjectData.xaml.cs">
+      <DependentUpon>WindowObjectData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowXMLProvider.xaml.cs">
+      <DependentUpon>WindowXMLProvider.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -139,14 +103,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flag.bmp" />
+    <Content Include="GameStats.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="flags\us.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="flags\fr.png" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

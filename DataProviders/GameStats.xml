@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GameStatsOwn xmlns="">
+  <GameStat Type="Beginner">
+    <HighScore>1202</HighScore>
+  </GameStat>
+  <GameStat Type="Intermediate">
+    <HighScore>1008</HighScore>
+  </GameStat>
+  <GameStat Type="Advanced">
+    <HighScore>342</HighScore>
+  </GameStat>
+</GameStatsOwn>

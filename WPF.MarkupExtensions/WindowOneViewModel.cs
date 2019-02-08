@@ -47,7 +47,7 @@ namespace WPF.MarkupExtensions
             }
         }
 
-        public void MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        public void MethodForRightMouseButton(object sender, MouseButtonEventArgs e)
         {
 
         }
